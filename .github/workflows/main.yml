@@ -15,7 +15,7 @@ jobs:
         run: |
           mkdir dist
           cp index.html dist/
-          cp download.png dist/
+          cp download.jpg dist/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
