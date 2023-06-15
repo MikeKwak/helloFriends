@@ -1,5 +1,3 @@
-name: Deploy to GitHub Pages
-
 on:
   push:
     branches:
@@ -10,17 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Build
+      - name: Build and Deploy
         run: |
-          # Add build commands here if required
-          # For a simple static page, this step may not be necessary
+          mkdir dist
+          cp index.html dist/
+          cp download.png dist/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./public
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
